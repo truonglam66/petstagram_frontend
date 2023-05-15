@@ -1,0 +1,291 @@
+// $fontfamilyInter: "Inter", sans-serif;
+// $fontIndleFlower: "Indie Flower";
+@mixin google-font($family) {
+  @import url("https://fonts.googleapis.com/css2?family=#{$family}&display=swap");
+}
+
+@include google-font("Inter:wght@600");
+@include google-font("Indie+Flower");
+
+$grayColor: rgba(255, 255, 255, 0.4) 102.55%;
+$whiteColor: #ffffff;
+$blackColor: #000000;
+
+.container {
+  /* Đăng nhập */
+
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+
+  background: $blackColor;
+}
+
+.main-title {
+  /* HỆ THỐNG QUẢN LÝ NHÀ TRỌ APETECHS */
+
+  position: absolute;
+  left: 12%;
+  width: auto;
+  top: 14vh;
+  font-weight: 700;
+  font-size: 2.5vw;
+  line-height: 1.5em;
+  color: $whiteColor;
+}
+
+.main-title > span {
+  color: #fbae17;
+  font-size: 1em;
+}
+
+.sub-title {
+  position: absolute;
+  left: 6vw;
+  top: 40%;
+  font-family: "Indie Flower", cursive;
+  font-size: 1.5vw;
+  line-height: 1rem;
+  color: $whiteColor;
+}
+
+.login_art {
+  position: absolute;
+  width: 32rem;
+  left: 12vw;
+  top: 40%;
+}
+
+.form-panel {
+  position: absolute;
+  width: 45em;
+  height: 39em;
+  right: 5%;
+  top: 10vw;
+  background: #fcfcfc;
+  border-radius: 20px;
+}
+
+.logo_login2 {
+  /* logo_login 2 */
+
+  position: absolute;
+  width: 82px;
+  height: 86px;
+  left: 289px;
+  top: 63px;
+}
+
+.logo_login3 {
+  position: absolute;
+  width: 144px;
+  height: 19px;
+  left: 258px;
+  top: 149px;
+}
+
+.name_login2 {
+  /* APeHOUSE */
+
+  position: absolute;
+  width: 144px;
+  height: 19px;
+  left: 258px;
+  top: 149px;
+
+  font-family: "BabaPro";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 19px;
+  text-align: center;
+
+  color: $blackColor;
+}
+
+.login_form {
+  /* tài khoản */
+
+  position: absolute;
+  width: 300px;
+  height: 174px;
+  left: 175px;
+  top: 192px;
+}
+
+.login_item {
+  width: 300px;
+  padding-bottom: 20px;
+}
+
+.frame_40034 {
+  /* Frame 40034 */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 12px 12px 12px 8px;
+  gap: 12px;
+
+  position: inherit;
+  left: 0%;
+  right: 0%;
+  top: 15.52%;
+  bottom: 56.9%;
+
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+
+.frame_40035 {
+  /* Frame 40035 */
+
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 12px 12px 8px;
+  gap: 12px;
+
+  position: inherit;
+  left: 0%;
+  right: 0%;
+  top: 72.41%;
+  bottom: 0%;
+
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  border-radius: 4px;
+}
+
+.login_input_logo {
+  /* logo_login 2 */
+
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+}
+
+input.login_input {
+  /* Nhập tài khoản */
+
+  background-color: rgba(255, 255, 255, 0);
+  color: #000000d8;
+  border: none;
+  width: 13rem;
+  left: 0rem;
+
+  &::placeholder {
+    color: #000000d8;
+  }
+}
+
+.frame_39984 {
+  /* Frame 39984 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 6px 8px;
+  gap: 12px;
+
+  position: absolute;
+  width: 141px;
+  height: 32px;
+  left: 165px;
+  top: 390px;
+}
+
+input[type="checkbox"].login_checkbox {
+  /* carbon:checkbox-checked-filled */
+
+  width: 14px;
+  height: 14px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  accent-color: $blackColor;
+}
+
+.login_checkbox_title {
+  width: 93px;
+  height: 17px;
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  /* identical to box height */
+
+  color: $blackColor;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+button.login_button {
+  /* Frame 40036 */
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 12px 12px 8px;
+  gap: 12px;
+
+  position: absolute;
+  width: 300px;
+  height: 43px;
+  left: 0px;
+  top: 244px;
+
+  background: $blackColor;
+  border-radius: 4px;
+  border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.login_button_name {
+  /* Đăng nhập */
+
+  width: 94px;
+  height: 19px;
+
+  font-family: "Inter", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+  letter-spacing: 0.08em;
+
+  color: #fbae17;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}

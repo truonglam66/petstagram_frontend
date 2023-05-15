@@ -1,0 +1,46 @@
+# deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ape-room-admin
+  namespace: ape-room
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ape-room-admin
+  template:
+    metadata:
+      labels:
+        app: ape-room-admin
+    spec:
+      containers:
+        - name: ape-room-admin
+          image: 077293829360.dkr.ecr.ap-southeast-1.amazonaws.com/ape-room-admin:latest
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/localtime
+              name: tz-config
+      volumes:
+        - name: tz-config
+          hostPath:
+            path: /usr/share/zoneinfo/Asia/Ho_Chi_Minh
+
+---
+# service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: ape-room-admin
+  namespace: ape-room
+  labels:
+    run: ape-room-admin
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: ape-room-admin
