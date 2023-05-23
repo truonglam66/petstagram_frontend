@@ -6,7 +6,6 @@ import { ApiService } from '../../services/api.service';
 import { AuthenticationService } from '../../services/authentication.service';
 import { CoreService } from '../../services/core.service';
 
-import * as Flatted from 'flatted';
 import * as $ from 'jquery';
 import { NzModalRef, NzModalService } from 'ng-zorro-antd/modal';
 import { enumData } from '../../core/enumData';
@@ -141,88 +140,7 @@ export class AdminLayoutComponent implements OnInit {
   }
 
   async ngOnInit() {
-    await this.appService.post(this.appService.NOTIFY.LOAD_NEWS_FROM_DATA, "").then((res) => {
-      this.listNews = res;
-      this.listNews.forEach((news: any) => {
-        this.listNewsShowData = this.listNewsShowData.concat(news.title+": "+news.content+"\t\t");
-      })
-    })
 
-    this.appService.eventChangeLocal.subscribe((res) => {
-      if (res === true) {
-        const temp: any = null;
-        let arr = localStorage.getItem('currentUser')
-          ? Flatted.parse(localStorage.getItem('currentUser') || temp)
-          : temp;
-        this.currentUser.apartmentId = arr.apartmentId;
-      }
-    });
-    {
-      this.Permission = this.enumData.Role.Permission;
-      this.Department = this.enumData.Role.Department;
-      this.SettingString = this.enumData.Role.SettingString;
-      this.Employee = this.enumData.Role.Employee;
-      this.Contract = this.enumData.Role.Contract;
-      this.Resident = this.enumData.Role.Resident;
-      this.Bill = this.enumData.Role.Bill;
-      this.Job = this.enumData.Role.Job;
-      this.CharterCapital = this.enumData.Role.CharterCapital;
-      this.Payslip = this.enumData.Role.Payslip;
-      this.Receipt = this.enumData.Role.Receipt;
-      this.Area = this.enumData.Role.Area;
-      this.Apartment = this.enumData.Role.Apartment;
-      this.Room = this.enumData.Role.Room;
-      this.Service = this.enumData.Role.Service;
-      this.JobCategory = this.enumData.Role.JobCategory;
-      this.PaymentCategory = this.enumData.Role.PaymentCategory;
-      this.Supplier = this.enumData.Role.Supplier;
-      this.Notify = this.enumData.Role.Notify;
-      this.Report = this.enumData.Role.Report;
-      this.AssetManagement = this.enumData.Role.AssetManagement;
-      this.AssetTypeManagement = this.enumData.Role.AssetTypeManagement;
-      // this.Message = this.enumData.Role.Message
-
-      this.AreaStatus = this.enumData.Role.AreaStatus;
-      this.Complaint = this.enumData.Role.Complaint;
-      this.ComplaintType = this.enumData.Role.ComplaintType;
-      this.EmployeeDebt = this.enumData.Role.EmployeeDebt;
-      this.EmployeeAdvance = this.enumData.Role.EmployeeAdvance;
-
-      this.JobDailyInApartmentReport =
-        this.enumData.Role.JobDailyInApartmentReport;
-      this.FinanceAnalysis = this.enumData.Role.FinanceAnalysis;
-      this.FinanceSummaryReport = this.enumData.Role.FinanceSummaryReport;
-      this.RevenueApartmentByTypeReport =
-        this.enumData.Role.RevenueApartmentByTypeReport;
-      this.RevenueApartmentInMonthReport =
-        this.enumData.Role.RevenueApartmentInMonthReport;
-      this.SummaryRevenueApartmentReport =
-        this.enumData.Role.SummaryRevenueApartmentReport;
-      this.RevenueDetail = this.enumData.Role.RevenueDetail;
-      this.CostApartmentReport = this.enumData.Role.CostApartmentReport;
-      this.CostDepartmentReport = this.enumData.Role.CostDepartmentReport;
-      this.CostDetailReport = this.enumData.Role.CostDetailReport;
-      this.CashFlowAnalysisReport = this.enumData.Role.CashFlowAnalysisReport;
-      this.AssetReport = this.enumData.Role.AssetAndDepreciationReport;
-      this.ProfitApartmentInMonthReport =
-        this.enumData.Role.ProfitApartmentInMonthReport;
-      this.AssetAndDepreciationReport =
-        this.enumData.Role.AssetAndDepreciationReport;
-      this.BillSentToZalo = this.enumData.Role.BillSentToZalo;
-      this.CollectionReport = this.enumData.Role.CollectionReport;
-      this.AssetCategory = this.enumData.Role.AssetCategory;
-      this.DepositReport = this.enumData.Role.DepositReport;
-      this.currentUserName = this.authenticationService.currentUserValue.username;
-      this.userAvatarUrl = this.currentUser.avatarUrl
-      $(`#user-avatar`).attr("src",this.userAvatarUrl);
-    }
-
-    this.menuBarElement = $(`.app-navbar`);
-    this.menuBarWidth = this.menuBarElement.width();
-
-    this.getSocket();
-    this.loadNotify();
-    this.loadAllDataSelect();
   }
 
   logout() {
@@ -232,69 +150,11 @@ export class AdminLayoutComponent implements OnInit {
   afterClose(): void {
     console.log('close');
   }
-  loadNotify() {
-    // this.loading = true;
-    // this.appService
-    //   .post(this.appService.NOTIFY.LOAD, {
-    //     take: this.numNotify,
-    //   })
-    //   .then((res: { lstNotify: any[]; numNofityNew: number }) => {
-    //     this.lstNotify = res.lstNotify;
-    //     this.loading = false;
-    //     this.numNofityNew = res.numNofityNew;
 
-    //     for (const wa of this.lstNotify) {
-    //       wa.checked = false;
-    //     }
-    //   });
-  }
-
-  onClickScrollHandler = (id: any) => {
-    const menuWidth = $(`.sidebar-menu`).width()!*8
-    const navbarWidth = $(`.app-navbar`).width()!
-    const maxScrollDistance = (menuWidth - navbarWidth)
-    if(id === 'arrow-right') {
-      this.scrollDistance += maxScrollDistance;
-      this.menuBarElement.animate(
-        {
-          scrollLeft: this.scrollDistance,
-        }
-      );
-    }
-    else if(id === 'arrow-left') {
-      this.scrollDistance -= maxScrollDistance;
-      this.menuBarElement.animate(
-        {
-          scrollLeft: this.scrollDistance,
-        }
-      );
-    }
-    if(this.isScrollLeftClimaxed()) this.scrollDistance = 0;
-    if(this.isScrollRightClimaxed()) this.scrollDistance = maxScrollDistance;
-  }
-
-  isScrollLeftClimaxed = () => {
-    return this.scrollDistance <= 0;
-  }
-  
-  isScrollRightClimaxed = () => {
-    return this.scrollDistance >= $(`.sidebar-menu`).width()!*8 - $(`.app-navbar`).width()!
-  }
 
   onClickLogout = () => {
     this.authenticationService.logout();
     window.location.reload();
-  }
-
-  setLayoutColor = (event: any) => {
-    let layoutColor = event.target.style.backgroundColor.toString();
-    $('.app-navbar').css('background', layoutColor);
-    $('.app-header').css('background', layoutColor);
-  }
-
-  setAppFontFamily = (event: any) => {
-    let font = event.target.innerText;
-    $(`*`).css('font-family', font);
   }
 
   getSocket() {
@@ -303,11 +163,6 @@ export class AdminLayoutComponent implements OnInit {
       if (res) {
       }
     });
-  }
-
-  loadMoreNotify() {
-    this.numNotify += 10;
-    this.loadNotify();
   }
 
   updateCheckedSet(id: number, checked: boolean): void {
@@ -338,65 +193,6 @@ export class AdminLayoutComponent implements OnInit {
   onItemChecked(id: number, checked: any): void {
     this.updateCheckedSet(id, checked);
     this.refreshCheckedStatus();
-  }
-
-  hideModalViewNotify() {
-    this.isVisibleNotify = false;
-    this.numNotify = 10;
-    this.loadNotify();
-  }
-
-  onReadAllNotify() {
-    let data: any = [];
-    if (this.setOfCheckedId.size > 0) {
-      this.setOfCheckedId.forEach((x) => {
-        if (x.status === this.enumData.NotifyStatus.New.code) {
-          data.push({ id: x.id });
-        }
-      });
-      this.notifyService.showloading();
-      this.appService
-        .post(this.appService.NOTIFY.READ_LIST, data)
-        .then((res) => {
-          this.notifyService.show(
-            this.enumData.NotifyType.Success,
-            res.message
-          );
-          this.notifyService.hideloading();
-          this.loadNotify();
-        });
-    } else {
-      this.notifyService.show(
-        this.enumData.NotifyType.Warning,
-        'Vui lòng chọn ít nhất một thông báo!'
-      );
-    }
-  }
-
-  showConfirm(): void {
-    this.confirmModal = this.modal.confirm({
-      nzTitle: 'Bạn muốn đánh dấu đọc tất cả thông báo?',
-      nzOkText: 'Đánh dấu đọc tất cả',
-      nzCancelText: 'Hủy',
-      nzOnOk: () => this.onReadAllNotify(),
-    });
-  }
-
-  loadAllDataSelect() {
-    this.notifyService.showloading();
-    this.appService
-      .post(this.appService.APARTMENT.LOAD_DATA, {})
-      .then(async (res) => {
-        this.notifyService.hideloading();
-        let lstApartment = res;
-        for (let d of lstApartment) {
-          let arr = d.name.split(', ');
-          d.name = arr.join(' ');
-        }
-        this.apartmentCurrent = lstApartment.find(
-          (s: any) => s.id == this.currentUser.apartmentId
-        );
-      });
   }
 
   scrollTop() {
