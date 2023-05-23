@@ -20,6 +20,7 @@ import { NotifyService } from './services/notify.service';
 import { StorageService } from './services/storage.service';
 
 import { OverlayContainer } from '@angular/cdk/overlay';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { NgMagnizoomModule } from 'ng-magnizoom';
 import { NzAvatarModule } from 'ng-zorro-antd/avatar';
 import { NzBadgeModule } from 'ng-zorro-antd/badge';
@@ -91,7 +92,8 @@ const config: SocketIoConfig = {
     NzFormModule,
     NzUploadModule,
     NzToolTipModule,
-    NgMagnizoomModule
+    NgMagnizoomModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: vi_VN },

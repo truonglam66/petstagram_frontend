@@ -13,8 +13,6 @@ import { NotifyService } from '../../services/notify.service';
 import { SocketService } from '../../services/socket.service';
 import { EditAccountComponent } from '../edit-account/edit-account.component';
 
-
-
 @Component({
   selector: 'app-admin-layout',
   templateUrl: './admin-layout.component.html',

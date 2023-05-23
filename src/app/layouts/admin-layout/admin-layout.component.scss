@@ -9,3 +9,17 @@
 ::ng-deep.ant-layout-content {
   background-color: #fcfcfc;
 }
+
+.icon {
+  font-size: 24px;
+  margin-right: 30px;
+}
+
+::ng-deep.anticon svg {
+  font-size: 24px;
+}
+
+.ant-menu-item {
+  font-size: 18px;
+  height: 54px;
+}
